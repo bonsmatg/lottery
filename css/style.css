@@ -1,6 +1,6 @@
 body{
   font-family: 'Lato', sans-serif;
-  background: url('../images/main-bg.jpg')repeat;
+  background: whitesmoke;
 }
 body a,a.slide-btn,a.more{
     transition:0.5s all;
@@ -39,7 +39,7 @@ span.menu{
 }
 .top-nav{
 	text-align:left;
-	padding: 1em 0 0 0;
+	padding: 5px 0 5px 0;
 }
 .top-nav ul{
 	margin:0;
@@ -61,7 +61,7 @@ span.menu{
 .top-nav ul li.active,.top-nav ul li.active a{
 	color: #A23B12;
 	text-decoration: none;
-	background: url(../images/nav-bg.png)no-repeat;
+	background: wheat;
 	background-size: initial;
 	transition: 0.5s all;
 	-webkit-transition: 0.5s all;
@@ -70,7 +70,7 @@ span.menu{
 	background-size:100% 100%;
 }
 .top-header{
-	background: url('../images/top-head.jpg')repeat-x;
+	background: black;
 	min-height: 88px;
 }
 .mid-head{
