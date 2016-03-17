@@ -19,10 +19,4 @@ class Cismarty extends Smarty {
         $this->left_delimiter  = $this->ci->config->item('left_delimiter');
         $this->right_delimiter = $this->ci->config->item('right_delimiter');
     }
-
-    public function view( $template, $data = array() )
-    {
-        $this->assign('array', $data);
-        $this->display($template);
-    }
 }

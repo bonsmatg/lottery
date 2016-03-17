@@ -16,9 +16,4 @@ class MY_Controller extends CI_Controller {
     {
         $this->cismarty->display($html);
     }
-
-    public function view($html, $data)
-    {
-        $this->cismarty->view($html, $data);
-    }
 }

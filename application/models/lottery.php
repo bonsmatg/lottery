@@ -17,10 +17,8 @@ class Lottery extends CI_Model {
             foreach (array('first','second','third','fourth','last') as $keyOfNum) {
                 $value[$keyOfNum] = array("num" => $value[$keyOfNum],
                     'info' => $this->compare(substr($lotteryType, 2),$rawData,$key,$value,$keyOfNum,$strategy));
-//                print_r($this->compare(substr($lotteryType, 2),$rawData,$key,$value,$keyOfNum,$strategy));
             }
             $rawData[$key] = $value;
-//            var_dump($rawData);
         }
 
         return $rawData;
@@ -46,8 +44,7 @@ class Lottery extends CI_Model {
                             'm' => array('num' => [4,5,6,7,8],     'opposite' => 'c')
             );
         }
-        $result = 0;
-        if(($key + 1) % 4 > 2) {
+        if(($key + 1) % 4 == 3 || ($key + 1) % 4 == 0) {
             if(in_array($value[$keyOfNum], $type[$type[$strategy['method']]['opposite']]['num'])){
                 $result = 0;
             }
@@ -65,7 +62,6 @@ class Lottery extends CI_Model {
                 if($key == 0){
                     $result = 1;
                 }else{
-//                    var_dump($rawData[$key - 1][$keyOfNum]);
                     $result = $rawData[$key - 1][$keyOfNum]['info']['result'] + 1;
                 }
             }

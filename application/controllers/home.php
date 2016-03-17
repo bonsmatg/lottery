@@ -6,9 +6,8 @@ class Home extends MY_Controller {
 	public function index()
 	{
 		$this->load->model("lottery");
-		$date = array('year' => 2007, 'month' => 4, 'day' => 1);
-		$data = $this->lottery->getData("cqssc", $date, array('method' => "b"));
-		print_r($data);
+		$date = array('year' => date("Y"), 'month' => date("m"), 'day' => date("d") - 1);
+		$data = $this->lottery->getData("tjssc", $date, array('method' => "b"));
 		$this->assign('data', $data);
 		$this->display('index.tpl', $data);
 	}
