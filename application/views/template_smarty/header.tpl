@@ -55,7 +55,7 @@
             <div class="container">
                 <!--logo-->
                 <div class="logo">
-                    <h1><a href="javascript:void(0)">彩票数据统计</a></h1>
+                    <h1><a href="javascript:void(0)">Statistics</a></h1>
                 </div>
                 <div class="clearfix"> </div>
             </div>
@@ -66,12 +66,12 @@
                 <div class="top-nav">
                     <span class="menu"> </span>
                     <ul>
-                        <li class="active"><a href="index.html">重庆时时彩</a></li>
-                        <li><a href="about.html">新疆时时彩</a></li>
-                        <li><a href="services.html">天津时时彩</a></li>
-                        <li><a href="solutions.html">江西11选5</a></li>
-                        <li><a href="404.html">山东11选5</a></li>
-                        <li><a href="contact.html">广东11选5</a></li>
+                        <li class="active"><a href="index.html">CQSSC</a></li>
+                        <li><a href="about.html">XJSSC</a></li>
+                        <li><a href="services.html">TJSSC</a></li>
+                        <li><a href="solutions.html">JX11-5</a></li>
+                        <li><a href="404.html">SD11-5</a></li>
+                        <li><a href="contact.html">GD11-5</a></li>
                         <div class="clearfix"> </div>
                     </ul>
                 </div>

@@ -39,7 +39,7 @@ span.menu{
 }
 .top-nav{
 	text-align:left;
-	padding: 5px 0 5px 0;
+	/*padding: 5px 0 5px 0;*/
 }
 .top-nav ul{
 	margin:0;
@@ -311,7 +311,7 @@ left: auto;
 }
 /*----------------*/
 .Officia-section {
-padding: 5em 0;
+padding: 2em 0;
 }
 .Officia-section-part-1 h3 {
 font-weight: 400;
