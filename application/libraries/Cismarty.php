@@ -21,11 +21,8 @@ class Cismarty extends Smarty {
     }
 
     public function view( $template, $data = array() )
-    {   
-        foreach ($data as $key => $val)
-        {   
-            $this->assign($key, $val);
-        }
-        $this->display($template); 
+    {
+        $this->assign('array', $data);
+        $this->display($template);
     }
 }

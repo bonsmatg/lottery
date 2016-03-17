@@ -9,5 +9,5 @@ $config['compile_dir']     = APPPATH . 'views/template_c';
 $config['cache_dir']       = APPPATH . 'views/cache';
 $config['config_dir']      = APPPATH . 'views/config';
 $config['use_sub_dirs']    = false; 
-$config['left_delimiter']  = '<%';
-$config['right_delimiter'] = '%>';
+$config['left_delimiter']  = '{';
+$config['right_delimiter'] = '}';
