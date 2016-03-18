@@ -5,7 +5,16 @@
 		 <div class="Officia-section-info">
              <div class="col-md-6 Officia-section-part-1">
                  <table class="table">
-                     {foreach from=$data item=item}
+					 <tr>
+						 <th>NO.</th>
+						 <th>Time</th>
+						 <th>First</th>
+						 <th>Second</th>
+						 <th>Third</th>
+						 <th>Fourth</th>
+						 <th>Last</th>
+					 </tr>
+                     {foreach from=$data[0] item=item}
                          <tr>
                              <td>{$item.num}</td>
                              <td>{$item.time}</td>
@@ -16,6 +25,15 @@
                              <td class={if $item.last.info.result gt 0}"danger"{else}"success"{/if}>{$item.last.num}</td>
                         </tr>
                      {/foreach}
+					 <tr>
+						 <td></td>
+						 <td>MAX</td>
+						 <td>{$data[1]['first']}</td>
+						 <td>{$data[1]['second']}</td>
+						 <td>{$data[1]['third']}</td>
+						 <td>{$data[1]['fourth']}</td>
+						 <td>{$data[1]['last']}</td>
+					 </tr>
                  </table>
              </div>
              <div class="col-md-6 Officia-section-part-2">

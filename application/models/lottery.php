@@ -3,6 +3,7 @@ header("Content-Type: text/html;charset=utf-8");
 
 class Lottery extends CI_Model {
 
+    public $maxNumber=[];
     function __construct() {
         parent::__construct();
     }
@@ -21,7 +22,7 @@ class Lottery extends CI_Model {
             $rawData[$key] = $value;
         }
 
-        return $rawData;
+        return [$rawData, $this->maxNumber];
 
     }
 
@@ -53,6 +54,13 @@ class Lottery extends CI_Model {
                     $result = 1;
                 }else{
                     $result = $rawData[$key - 1][$keyOfNum]['info']['result'] + 1;
+                    if(array_key_exists($keyOfNum, $this->maxNumber)){
+                        if($result > $this->maxNumber[$keyOfNum]){
+                            $this->maxNumber[$keyOfNum] = $result;
+                        }
+                    }else{
+                        $this->maxNumber[$keyOfNum] = $result;
+                    }
                 }
             }
         }else{
@@ -63,6 +71,13 @@ class Lottery extends CI_Model {
                     $result = 1;
                 }else{
                     $result = $rawData[$key - 1][$keyOfNum]['info']['result'] + 1;
+                    if(array_key_exists($keyOfNum, $this->maxNumber)){
+                        if($result > $this->maxNumber[$keyOfNum]){
+                            $this->maxNumber[$keyOfNum] = $result;
+                        }
+                    }else{
+                        $this->maxNumber[$keyOfNum] = $result;
+                    }
                 }
             }
         }

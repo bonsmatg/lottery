@@ -5,10 +5,20 @@ class Home extends MY_Controller {
 
 	public function index()
 	{
-		$this->load->model("lottery");
-		$date = array('year' => date("Y"), 'month' => date("m"), 'day' => date("d") - 1);
-		$data = $this->lottery->getData("tjssc", $date, array('method' => "b"));
+		$data = $this->getData("cqssc", 0, array('method' => 'b'));
 		$this->assign('data', $data);
 		$this->display('index.tpl', $data);
+	}
+
+	public function getDate($day){
+		$date = date("Y-m-d",strtotime("-".$day." day"));
+		$dateArray = explode('-', $date);
+		return array('year' => $dateArray[0], 'month' => $dateArray[1], 'day' => $dateArray[2]);
+	}
+
+	public function getData($type, $preDay, $strategy){
+		$date = $this->getDate($preDay);
+		$this->load->model("lottery");
+		return $this->lottery->getData($type, $date, $strategy);
 	}
 }

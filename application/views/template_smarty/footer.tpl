@@ -1,7 +1,7 @@
         <div class="footer">
             <div class="container">
                 <div class="copy-right">
-                    <p>Copyright &copy; 2016.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
+                    <p>Copyright &copy; 2016.Company name All rights reserved.</p>
                 </div>
             </div>
         </div>
