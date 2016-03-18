@@ -3,10 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-	public function index()
+	public function index($type = "tjssc", $preDay = 2, $strategy = array('method' => 'b'))
 	{
-		$data = $this->getData("cqssc", 0, array('method' => 'b'));
+		$data = $this->getData($type, $preDay, $strategy);
 		$this->assign('data', $data);
+		$this->assign('type', $type);
 		$this->display('index.tpl', $data);
 	}
 
@@ -20,5 +21,14 @@ class Home extends MY_Controller {
 		$date = $this->getDate($preDay);
 		$this->load->model("lottery");
 		return $this->lottery->getData($type, $date, $strategy);
+	}
+
+	public function getDataByDate($type, $date, $strategy = array("method" => 'b')){
+		$dateArray = explode('-', $date);
+		$dateHashArray = array('year' => $dateArray[0], 'month' => $dateArray[1], 'day' => $dateArray[2]);
+		$this->load->model("lottery");
+		$data = $this->lottery->getData($type, $dateHashArray, $strategy);
+		$this->assign('data', $data);
+		$this->display('index.tpl', $data);
 	}
 }

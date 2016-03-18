@@ -4,6 +4,32 @@
  	 <div class="container">
 		 <div class="Officia-section-info">
              <div class="col-md-6 Officia-section-part-1">
+                 <h3>Numbers <small>{$type}</small></h3>
+                 <form class="form-inline">
+                     <div class="form-group">
+                         <label>Mode</label>
+                         <select class="form-control">
+                             <option>BBSS</option>
+                             <option>SSBB</option>
+                             <option>OOEE</option>
+                             <option>EEOO</option>
+                             <option>CCMM</option>
+                             <option>MMCC</option>
+                         </select>
+                     </div>
+                     <div class="form-group">
+                         <label>Times</label>
+                         <select class="form-control">
+                             <option>Steady</option>
+                             <option>Aggressive</option>
+                         </select>
+                     </div>
+                     <div class="form-group input-append date form_datetime">
+                         <input size="12" type="text" value="">
+                         <span class="add-on"><i class="icon-th"></i></span>
+                     </div>
+                 </form>
+                 <br>
                  <table class="table">
 					 <tr>
 						 <th>NO.</th>
@@ -37,12 +63,16 @@
                  </table>
              </div>
              <div class="col-md-6 Officia-section-part-2">
-                 <h3>Mollit Anim Odest</h3>
+                 <h3>Statistics <small>{$type}</small></h3>
              </div>
              <div class="clearfix"> </div>
  	    </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "yyyy-mm-dd"
+    });
+</script>
 {include file="template_smarty/footer.tpl" }
 
