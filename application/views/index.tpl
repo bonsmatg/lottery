@@ -5,50 +5,49 @@
 		 <div class="Officia-section-info">
              <div class="col-md-6 Officia-section-part-1">
                  <h3>Numbers <small>{$type}</small></h3>
-                 <form class="form-inline">
+                 <form class="form-inline" action="/home/getDataByDate/{$type}" method="post">
                      <div class="form-group">
                          <label>Mode</label>
-                         <select class="form-control">
-                             <option>BBSS</option>
-                             <option>SSBB</option>
-                             <option>OOEE</option>
-                             <option>EEOO</option>
-                             <option>CCMM</option>
-                             <option>MMCC</option>
+                         <select class="form-control" name="mode">
+                             <option value="b" {if $strategy.method eq 'b'}selected="selected"{/if}>BBSS</option>
+                             <option value="s" {if $strategy.method eq 's'}selected="selected"{/if}>SSBB</option>
+                             <option value="o" {if $strategy.method eq 'o'}selected="selected"{/if}>OOEE</option>
+                             <option value="e" {if $strategy.method eq 'e'}selected="selected"{/if}>EEOO</option>
+                             <option value="c" {if $strategy.method eq 'c'}selected="selected"{/if}>CCMM</option>
+                             <option value="m" {if $strategy.method eq 'm'}selected="selected"{/if}>MMCC</option>
                          </select>
                      </div>
                      <div class="form-group">
                          <label>Times</label>
-                         <select class="form-control">
-                             <option>Steady</option>
-                             <option>Aggressive</option>
+                         <select class="form-control" name="times">
+                             <option value="1,2,6,15">Steady</option>
+                             <option value="1,2,6,18">Aggressive</option>
                          </select>
                      </div>
-                     <div class="form-group input-append date form_datetime">
-                         <input size="12" type="text" value="">
-                         <span class="add-on"><i class="icon-th"></i></span>
+                     <div class="form-group">
+                         <button type="submit" class="btn btn-default">Submit</button>
                      </div>
                  </form>
                  <br>
-                 <table class="table">
+                 <table class="table table-striped table-bordered table-hover table-condensed">
 					 <tr>
 						 <th>NO.</th>
 						 <th>Time</th>
-						 <th>First</th>
-						 <th>Second</th>
-						 <th>Third</th>
-						 <th>Fourth</th>
-						 <th>Last</th>
+						 <th>1st.</th>
+						 <th>2nd.</th>
+						 <th>3rd.</th>
+						 <th>4th.</th>
+						 <th>5th.</th>
 					 </tr>
                      {foreach from=$data[0] item=item}
                          <tr>
                              <td>{$item.num}</td>
                              <td>{$item.time}</td>
-                             <td class={if $item.first.info.result gt 0}"danger"{else}"success"{/if}>{$item.first.num}</td>
-                             <td class={if $item.second.info.result gt 0}"danger"{else}"success"{/if}>{$item.second.num}</td>
-                             <td class={if $item.third.info.result gt 0}"danger"{else}"success"{/if}>{$item.third.num}</td>
-                             <td class={if $item.fourth.info.result gt 0}"danger"{else}"success"{/if}>{$item.fourth.num}</td>
-                             <td class={if $item.last.info.result gt 0}"danger"{else}"success"{/if}>{$item.last.num}</td>
+                             <td class="{if $item.first.info.result gt 0}danger{else}info{/if}">{$item.first.num}</td>
+                             <td class={if $item.second.info.result gt 0}"danger"{else}"info"{/if}>{$item.second.num}</td>
+                             <td class={if $item.third.info.result gt 0}"danger"{else}"info"{/if}>{$item.third.num}</td>
+                             <td class={if $item.fourth.info.result gt 0}"danger"{else}"info"{/if}>{$item.fourth.num}</td>
+                             <td class={if $item.last.info.result gt 0}"danger"{else}"info"{/if}>{$item.last.num}</td>
                         </tr>
                      {/foreach}
 					 <tr>
@@ -69,10 +68,6 @@
  	    </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(".form_datetime").datetimepicker({
-        format: "yyyy-mm-dd"
-    });
-</script>
+
 {include file="template_smarty/footer.tpl" }
 

@@ -4,9 +4,7 @@
     <title>Lottery</title>
     <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
     <link href="/css/style.css" rel='stylesheet' type='text/css' />
-    <link href="/css/bootstrap-datetimepicker.min.css" rel='stylesheet' type="text/css" />
     <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap-datetimepicker.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -53,7 +51,7 @@
             <div class="container">
                 <!--logo-->
                 <div class="logo">
-                    <h1><a href="javascript:void(0)">Lottery</a><small>Money Maker</small></h1>
+                    <h1><a href="javascript:void(0)">Lottery  </a><small>Money Maker</small></h1>
                 </div>
                 <div class="clearfix"> </div>
             </div>
