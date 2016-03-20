@@ -3,12 +3,13 @@ header("Content-Type: text/html;charset=utf-8");
 
 class Lottery extends CI_Model {
 
-    public $maxNumber=[];
+    public $maxNumber;
     function __construct() {
         parent::__construct();
     }
 
     function getData($lotteryType, $date, $strategy) {
+        $this->maxNumber = [];
         $condition = array('year' =>$date['year'], 'month' => $date['month'], 'day' => $date['day']);
 
         $this->db->where($condition);
@@ -84,6 +85,24 @@ class Lottery extends CI_Model {
 
         $result = array('result' => $result);
         return $result;
+
+    }
+
+    function insertMax($type, $date, $dateVar, $maxArray, $strategy){
+        foreach ($maxArray as $pos => $value){
+            $data = array(
+                'type' => $type,
+                'date' => $date,
+                'year' => $dateVar['year'],
+                'month' => $dateVar['month'],
+                'day'   => $dateVar['day'],
+                'weekday' => date("w",strtotime($date)),
+                'position' => $pos,
+                'strategy' => $strategy,
+                'max' => $value
+            );
+            $this->db->insert('statistics',$data);
+        }
 
     }
 

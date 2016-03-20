@@ -64,7 +64,7 @@
                     <ul>
                         <li class={if $type eq 'cqssc'}"active"{else}""{/if}><a href="/">CQSSC</a></li>
                         <li class={if $type eq 'xjssc'}"active"{else}""{/if}><a href="/home/index/xjssc">XJSSC</a></li>
-                        <li class={if $type eq 'tjssc'}"active"{else}""{/if}><a href="/home/index/tjssc/1">TJSSC</a></li>
+                        <li class={if $type eq 'tjssc'}"active"{else}""{/if}><a href="/home/index/tjssc">TJSSC</a></li>
                         <li class={if $type eq 'jx11x5'}"active"{else}""{/if}><a href="/home/index/jx11x5">JX11-5</a></li>
                         <li class={if $type eq 'sd11x5'}"active"{else}""{/if}><a href="/home/index/sd11x5">SD11-5</a></li>
                         <li class={if $type eq 'gd11x5'}"active"{else}""{/if}><a href="/home/index/gd11x5">GD11-5</a></li>

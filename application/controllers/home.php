@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-	public function index($type = "tjssc", $preDay = 3, $strategy = array('method' => 'b'))
+	public function index($type = "cqssc", $preDay = 0, $strategy = array('method' => 'b'))
 	{
 		$data = $this->getData($type, $preDay, $strategy);
 		$this->assign('data', $data);
@@ -11,6 +11,25 @@ class Home extends MY_Controller {
 		$this->assign('strategy', $strategy);
 		$this->display('index.tpl', $data);
 	}
+
+    public function insertMax($type = "gd11x5"){
+        $date= "2015-06-07";
+        do {
+            echo $date."<br>";
+            $this->load->model("lottery");
+            $dateArray = explode('-', $date);
+            $dateVar = array('year' => $dateArray[0], 'month' => $dateArray[1], 'day' => $dateArray[2]);
+            foreach (array('b','s','o','e','c','m') as $value){
+                $result = $this->lottery->getData($type, $dateVar, array('method' => $value));
+                $this->lottery->insertMax($type, $date, $dateVar, $result[1], $value);
+            }
+
+            $date = date("Y-m-d", strtotime("$date +1 day"));
+        }
+        while($date != date("Y-m-d"));
+//        while($date != "2009-11-11");
+
+    }
 
 	public function getDate($day){
 		$date = date("Y-m-d",strtotime("-".$day." day"));
@@ -25,10 +44,8 @@ class Home extends MY_Controller {
 	}
 
 	public function getDataByDate($type){
-		echo $type;
-		var_dump($this->input->post());
 		$strategy = array("method" => $this->input->post('mode'));
-		$this->index($type, 3, $strategy);
+		$this->index($type, 0, $strategy);
 //		$dateArray = explode('-', $date);
 //		$dateHashArray = array('year' => $dateArray[0], 'month' => $dateArray[1], 'day' => $dateArray[2]);
 //		$this->load->model("lottery");

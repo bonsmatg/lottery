@@ -5,29 +5,36 @@
 		 <div class="Officia-section-info">
              <div class="col-md-6 Officia-section-part-1">
                  <h3>Numbers <small>{$type}</small></h3>
-                 <form class="form-inline" action="/home/getDataByDate/{$type}" method="post">
-                     <div class="form-group">
-                         <label>Mode</label>
-                         <select class="form-control" name="mode">
-                             <option value="b" {if $strategy.method eq 'b'}selected="selected"{/if}>BBSS</option>
-                             <option value="s" {if $strategy.method eq 's'}selected="selected"{/if}>SSBB</option>
-                             <option value="o" {if $strategy.method eq 'o'}selected="selected"{/if}>OOEE</option>
-                             <option value="e" {if $strategy.method eq 'e'}selected="selected"{/if}>EEOO</option>
-                             <option value="c" {if $strategy.method eq 'c'}selected="selected"{/if}>CCMM</option>
-                             <option value="m" {if $strategy.method eq 'm'}selected="selected"{/if}>MMCC</option>
-                         </select>
-                     </div>
-                     <div class="form-group">
-                         <label>Times</label>
-                         <select class="form-control" name="times">
-                             <option value="1,2,6,15">Steady</option>
-                             <option value="1,2,6,18">Aggressive</option>
-                         </select>
-                     </div>
-                     <div class="form-group">
-                         <button type="submit" class="btn btn-default">Submit</button>
-                     </div>
-                 </form>
+                 <div class="row">
+                     <form class="form-inline" action="/home/getDataByDate/{$type}" method="post">
+                         <div class="form-group">
+                             <label>Mode</label>
+                             <select class="form-control" name="mode">
+                                 <option value="b" {if $strategy.method eq 'b'}selected="selected"{/if}>BBSS</option>
+                                 <option value="s" {if $strategy.method eq 's'}selected="selected"{/if}>SSBB</option>
+                                 <option value="o" {if $strategy.method eq 'o'}selected="selected"{/if}>OOEE</option>
+                                 <option value="e" {if $strategy.method eq 'e'}selected="selected"{/if}>EEOO</option>
+                                 <option value="c" {if $strategy.method eq 'c'}selected="selected"{/if}>CCMM</option>
+                                 <option value="m" {if $strategy.method eq 'm'}selected="selected"{/if}>MMCC</option>
+                             </select>
+                         </div>
+                         <div class="form-group">
+                             <label>Times</label>
+                             <select class="form-control" name="times">
+                                 <option value="1,2,6,15">Steady</option>
+                                 <option value="1,2,6,18">Aggressive</option>
+                             </select>
+                         </div>
+                         <div class="form-group">
+                             <button type="submit" class="btn btn-default">Submit</button>
+                         </div>
+                     </form>
+                 </div>
+                 <br>
+                 <div class="">
+                     <a href=""><button class="btn btn-warning">Before</button></a>
+                     <a href=""><button class="btn btn-info">After</button></a>
+                 </div>
                  <br>
                  <table class="table table-striped table-bordered table-hover table-condensed">
 					 <tr>
