@@ -8,7 +8,7 @@
                  <div class="row">
                      <form class="form-inline" action="/home/getDataByDate/{$type}" method="post">
                          <div class="form-group">
-                             <label>Mode</label>
+                             <label for="mode">Mode</label>
                              <select class="form-control" name="mode">
                                  <option value="b" {if $strategy.method eq 'b'}selected="selected"{/if}>BBSS</option>
                                  <option value="s" {if $strategy.method eq 's'}selected="selected"{/if}>SSBB</option>
@@ -19,21 +19,21 @@
                              </select>
                          </div>
                          <div class="form-group">
-                             <label>Times</label>
+                             <label for="times">Times</label>
                              <select class="form-control" name="times">
                                  <option value="1,2,6,15">Steady</option>
                                  <option value="1,2,6,18">Aggressive</option>
                              </select>
                          </div>
                          <div class="form-group">
-                             <label>Date</label>
-                             <input class="form_datetime form-control" required="required" type="text" size="15">
+                             <label for="date">Date</label>
+                             <input name="date" class="form_datetime form-control" required="required" type="text" readonly placeholder="YYYY-mm-dd" size="15">
                              <script type="text/javascript">
                                  $(".form_datetime").datetimepicker({
                                      format: "yyyy-mm-dd",
                                      autoclose: true,
                                      todayBtn: true,
-                                     endDate:new Date(),
+                                     endDate: new Date(),
                                      minView: 'month'
                                  });
                              </script>
