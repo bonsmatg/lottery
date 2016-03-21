@@ -10,7 +10,8 @@ class Lottery extends CI_Model {
 
     function getData($lotteryType, $date, $strategy) {
         $this->maxNumber = [];
-        $condition = array('year' =>$date['year'], 'month' => $date['month'], 'day' => $date['day']);
+        $dateArray = explode('-', $date);
+        $condition = array('year' =>$dateArray[0], 'month' => $dateArray[1], 'day' => $dateArray[2]);
 
         $this->db->where($condition);
         $rawData = $this->db->select('num,time,no,first,second,third,fourth,last')->from($lotteryType)

@@ -27,7 +27,7 @@
                          </div>
                          <div class="form-group">
                              <label for="date">Date</label>
-                             <input name="date" class="form_datetime form-control" required="required" type="text" readonly placeholder="YYYY-mm-dd" size="15">
+                             <input name="date" value="{$date}" class="form_datetime form-control" required="required" type="text" placeholder="{$date}" size="15">
                              <script type="text/javascript">
                                  $(".form_datetime").datetimepicker({
                                      format: "yyyy-mm-dd",
@@ -44,11 +44,19 @@
                      </form>
                  </div>
                  <br>
-                 <div class="">
-                     <a href=""><button class="btn btn-warning">Before</button></a>
-                     <a href=""><button class="btn btn-info">After</button></a>
+                 <div class="row">
+                     <div class="col-md-8">
+                        <h2>{$date}</h2>
+                     </div>
+                     <div class="col-md-2">
+                         <a href=""><button class="btn btn-warning">Previous</button></a>
+                     </div>
+                     <div class="col-md-2">
+                         <a href=""><button class="btn btn-info pull-right" {if $today == $date}disabled="disabled"{/if}>Next</button></a>
+                     </div>
                  </div>
                  <br>
+                 <div class="row">
                  <table class="table table-striped table-bordered table-hover table-condensed">
 					 <tr>
 						 <th>NO.</th>
@@ -80,6 +88,7 @@
 						 <td>{$data[1]['last']}</td>
 					 </tr>
                  </table>
+                 </div>
              </div>
              <div class="col-md-6 Officia-section-part-2">
                  <h3>Statistics <small>{$type}</small></h3>
