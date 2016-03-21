@@ -10,9 +10,8 @@ class Home extends MY_Controller {
 		$this->today = date('Y-m-d');
 	}
 
-	public function index()
+	public function index($type = "cqssc")
 	{
-		$type = "cqssc";
 		$date = date('Y-m-d');
 		$strategy = array("method" => 'b');
 		$this->showData($type, $date, $strategy);
