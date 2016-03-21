@@ -39,7 +39,7 @@
                              </script>
                          </div>
                          <div class="form-group">
-                             <button type="submit" class="btn btn-default">Submit</button>
+                             <button type="submit" class="btn btn-primary">Submit</button>
                          </div>
                      </form>
                  </div>
@@ -49,7 +49,7 @@
                         <h2>{$date}</h2>
                      </div>
                      <div class="col-md-2">
-                         <a href=""><button class="btn btn-warning">Previous</button></a>
+                         <a href="/home/{$type}/"><button class="btn btn-warning">Previous</button></a>
                      </div>
                      <div class="col-md-2">
                          <a href=""><button class="btn btn-info pull-right" {if $today == $date}disabled="disabled"{/if}>Next</button></a>

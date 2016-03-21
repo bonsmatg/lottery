@@ -17,13 +17,9 @@ class Home extends MY_Controller {
 		$this->showData($type, $date, $strategy);
 	}
 
-	public function getData($type, $date, $strategy){
-		$this->load->model("lottery");
-		return $this->lottery->getData($type, $date, $strategy);
-    }
-
 	public function showData($type, $date, $strategy){
-		$data = $this->getData($type, $date, $strategy);
+		$this->load->model("lottery");
+		$data = $this->lottery->getData($type, $date, $strategy);
 		$this->assign('data', $data);
 		$this->assign('type', $type);
 		$this->assign('date', $date);
