@@ -13,12 +13,12 @@ class Lottery extends CI_Model {
         $condition = array('year' =>$date['year'], 'month' => $date['month'], 'day' => $date['day']);
 
         $this->db->where($condition);
-        $rawData = $this->db->select('num,time,first,second,third,fourth,last')->from($lotteryType)
+        $rawData = $this->db->select('num,time,no,first,second,third,fourth,last')->from($lotteryType)
             ->order_by('num')->get()->result_array();
         foreach ($rawData as $key => $value) {
             foreach (array('first','second','third','fourth','last') as $keyOfNum) {
                 $value[$keyOfNum] = array("num" => $value[$keyOfNum],
-                    'info' => $this->compare(substr($lotteryType, 2),$rawData,$key,$value,$keyOfNum,$strategy));
+                    'info' => $this->compare(substr($lotteryType, 2),$rawData,$value,$keyOfNum,$strategy));
             }
             $rawData[$key] = $value;
         }
@@ -27,7 +27,7 @@ class Lottery extends CI_Model {
 
     }
 
-    function compare($category, $rawData, $key, $value, $keyOfNum, $strategy){
+    function compare($category, $rawData, $value, $keyOfNum, $strategy){
 
         if($category == 'ssc') {
             $type = array(  'b' => array('num' => [5,6,7,8,9], 'opposite' => 's'),
@@ -46,15 +46,15 @@ class Lottery extends CI_Model {
                             'm' => array('num' => [4,5,6,7,8],     'opposite' => 'c')
             );
         }
-        if(($key + 1) % 4 == 3 || ($key + 1) % 4 == 0) {
+        if(($value['no']) % 4 == 3 || ($value['no']) % 4 == 0) {
             if(in_array($value[$keyOfNum], $type[$type[$strategy['method']]['opposite']]['num'])){
                 $result = 0;
             }
             else{
-                if($key == 0){
+                if($value['no'] == 1){
                     $result = 1;
                 }else{
-                    $result = $rawData[$key - 1][$keyOfNum]['info']['result'] + 1;
+                    $result = $rawData[$value['no'] - 2][$keyOfNum]['info']['result'] + 1;
                     if(array_key_exists($keyOfNum, $this->maxNumber)){
                         if($result > $this->maxNumber[$keyOfNum]){
                             $this->maxNumber[$keyOfNum] = $result;
@@ -68,10 +68,10 @@ class Lottery extends CI_Model {
             if(in_array($value[$keyOfNum], $type[$strategy['method']]['num'])){
                 $result = 0;
             }else{
-                if($key == 0){
+                if($value['no'] == 1){
                     $result = 1;
                 }else{
-                    $result = $rawData[$key - 1][$keyOfNum]['info']['result'] + 1;
+                    $result = $rawData[$value['no'] - 2][$keyOfNum]['info']['result'] + 1;
                     if(array_key_exists($keyOfNum, $this->maxNumber)){
                         if($result > $this->maxNumber[$keyOfNum]){
                             $this->maxNumber[$keyOfNum] = $result;
