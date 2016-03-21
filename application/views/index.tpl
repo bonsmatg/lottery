@@ -26,6 +26,19 @@
                              </select>
                          </div>
                          <div class="form-group">
+                             <label>Date</label>
+                             <input class="form_datetime form-control" required="required" type="text" size="15">
+                             <script type="text/javascript">
+                                 $(".form_datetime").datetimepicker({
+                                     format: "yyyy-mm-dd",
+                                     autoclose: true,
+                                     todayBtn: true,
+                                     endDate:new Date(),
+                                     minView: 'month'
+                                 });
+                             </script>
+                         </div>
+                         <div class="form-group">
                              <button type="submit" class="btn btn-default">Submit</button>
                          </div>
                      </form>

@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Lottery</title>
-    <link href="/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <link href="/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+    <link href="/css/bootstrap-datetimepicker.min.css" rel='stylesheet' type='text/css' />
     <link href="/css/style.css" rel='stylesheet' type='text/css' />
     <script src="/js/jquery.min.js"></script>
 
@@ -14,6 +15,7 @@
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script type="text/javascript" src="/js/move-top.js"></script>
     <script type="text/javascript" src="/js/easing.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
 
     <script type="text/javascript">
         jQuery(document).ready(function($) {
