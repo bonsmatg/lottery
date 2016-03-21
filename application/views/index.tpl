@@ -45,15 +45,35 @@
                  </div>
                  <br>
                  <div class="row">
-                     <div class="col-md-8">
-                        <h2>{$date}</h2>
-                     </div>
+                     <form name="dataForm" method="post">
+                         <div class="col-md-8">
+                            <h2>{$date}</h2>
+                         </div>
+                         <input type="hidden" value="{$date}" name="date"/>
+                         <input type="hidden" value="{$strategy.method}" name="mode">
+                         <div class="col-md-2">
+                             <button class="btn btn-warning" onclick="getPre()" type="submit">Previous</button>
+                         </div>
                      <div class="col-md-2">
-                         <a href="/home/{$type}/"><button class="btn btn-warning">Previous</button></a>
+                         <button class="btn btn-info pull-right" onclick="getNext()" type="submit" {if $today == $date}disabled="disabled"{/if}>Next</button>
                      </div>
-                     <div class="col-md-2">
-                         <a href=""><button class="btn btn-info pull-right" {if $today == $date}disabled="disabled"{/if}>Next</button></a>
-                     </div>
+                     </form>
+                     <script>
+                     {literal}
+                         function getPre(){
+                     {/literal}
+                             document.dataForm.action = "/home/getPreNextData/{$type}/-1";
+                             document.dataForm.submit();
+                     {literal}
+                         }
+                         function getNext(){
+                     {/literal}
+                             document.dataForm.action = "/home/getPreNextData/{$type}/1";
+                             document.dataForm.submit();
+                     {literal}
+                         }
+                     {/literal}
+                     </script>
                  </div>
                  <br>
                  <div class="row">

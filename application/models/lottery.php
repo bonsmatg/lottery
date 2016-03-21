@@ -16,16 +16,18 @@ class Lottery extends CI_Model {
         $this->db->where($condition);
         $rawData = $this->db->select('num,time,no,first,second,third,fourth,last')->from($lotteryType)
             ->order_by('num')->get()->result_array();
-        foreach ($rawData as $key => $value) {
-            foreach (array('first','second','third','fourth','last') as $keyOfNum) {
-                $value[$keyOfNum] = array("num" => $value[$keyOfNum],
-                    'info' => $this->compare(substr($lotteryType, 2),$rawData,$value,$keyOfNum,$strategy));
+        if(empty($rawData)){
+            return $rawData;
+        }else{
+            foreach ($rawData as $key => $value) {
+                foreach (array('first','second','third','fourth','last') as $keyOfNum) {
+                    $value[$keyOfNum] = array("num" => $value[$keyOfNum],
+                        'info' => $this->compare(substr($lotteryType, 2),$rawData,$value,$keyOfNum,$strategy));
+                }
+                $rawData[$key] = $value;
             }
-            $rawData[$key] = $value;
         }
-
         return [$rawData, $this->maxNumber];
-
     }
 
     function compare($category, $rawData, $value, $keyOfNum, $strategy){

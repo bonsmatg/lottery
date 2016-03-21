@@ -14,12 +14,18 @@ class Home extends MY_Controller {
 	{
 		$date = date('Y-m-d');
 		$strategy = array("method" => 'b');
-		$this->showData($type, $date, $strategy);
+		$this->showData($type, $date, $strategy, -1);
 	}
 
-	public function showData($type, $date, $strategy){
+	public function showData($type, $date, $strategy, $option){
 		$this->load->model("lottery");
-		$data = $this->lottery->getData($type, $date, $strategy);
+        $data = $this->lottery->getData($type, $date, $strategy);
+
+        while(empty($data)) {
+            $date = date('Y-m-d', strtotime("$date $option day"));
+            $data = $this->lottery->getData($type, $date, $strategy);
+        }
+
 		$this->assign('data', $data);
 		$this->assign('type', $type);
 		$this->assign('date', $date);
@@ -31,8 +37,16 @@ class Home extends MY_Controller {
 	public function getDataByDate($type){
 		$date = $this->input->post('date');
 		$strategy = array("method" => $this->input->post('mode'));
-		$this->showData($type, $date, $strategy);
+		$this->showData($type, $date, $strategy, 1);
 	}
+
+    public function getPreNextData($type, $preOrNext){
+        $date = $this->input->post('date');
+        $strategy = array("method" => $this->input->post('mode'));
+
+        $datePre = date('Y-m-d', strtotime("$date $preOrNext day"));
+        $this->showData($type, $datePre, $strategy, $preOrNext);
+    }
 
     public function insertMax($type = "gd11x5"){
         $date= "2015-06-07";
