@@ -44,8 +44,11 @@ class Home extends MY_Controller {
         $date = $this->input->post('date');
         $strategy = array("method" => $this->input->post('mode'));
 
-        $datePre = date('Y-m-d', strtotime("$date $preOrNext day"));
-        $this->showData($type, $datePre, $strategy, $preOrNext);
+        if($preOrNext == 1 && $date == $this->today){}else{
+            $date = date('Y-m-d', strtotime("$date $preOrNext day"));
+        }
+
+        $this->showData($type, $date, $strategy, $preOrNext);
     }
 
     public function insertMax($type = "gd11x5"){
