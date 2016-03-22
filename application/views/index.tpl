@@ -87,6 +87,7 @@
 						 <th>4th.</th>
 						 <th>5th.</th>
 					 </tr>
+                     {if $data|@count neq 0}
                      {foreach from=$data[0] item=item}
                          <tr>
                              <td>{$item.num}</td>
@@ -107,6 +108,11 @@
 						 <td>{$data[1]['fourth']}</td>
 						 <td>{$data[1]['last']}</td>
 					 </tr>
+                     {else}
+                         <tr>
+                             <td colspan="7" align="middle">---- No Data ----</td>
+                         </tr>
+                     {/if}
                  </table>
                  </div>
              </div>
