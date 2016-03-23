@@ -78,6 +78,7 @@
                  <br>
                  <div class="row">
                  <table class="table table-striped table-bordered table-hover table-condensed">
+                     {if $data|@count neq 0}
                      <tr class="warning">
                          <td colspan="2" align="middle">MAX</td>
                          <td>{$data[1]['first']}</td>
@@ -94,6 +95,7 @@
                          <td>{$data[0][$data[0]|@count-1].fourth.info.result}</td>
                          <td>{$data[0][$data[0]|@count-1].last.info.result}</td>
                      </tr>
+                     {/if}
 					 <tr>
 						 <th>NO.</th>
 						 <th>Time</th>
@@ -108,11 +110,11 @@
                          <tr>
                              <td>{$item.num}</td>
                              <td>{$item.time}</td>
-                             <td class="{if $item.first.info.result gt 0}danger{else}info{/if}">{$item.first.num}({$item.first.prediction})</td>
-                             <td class={if $item.second.info.result gt 0}"danger"{else}"info"{/if}>{$item.second.num}</td>
-                             <td class={if $item.third.info.result gt 0}"danger"{else}"info"{/if}>{$item.third.num}</td>
-                             <td class={if $item.fourth.info.result gt 0}"danger"{else}"info"{/if}>{$item.fourth.num}</td>
-                             <td class={if $item.last.info.result gt 0}"danger"{else}"info"{/if}>{$item.last.num}</td>
+                             <td><font color="{if $item.first.info.result gt 0}red{else}green{/if}">{$item.first.num}</font></td>
+                             <td><font color="{if $item.second.info.result gt 0}red{else}green{/if}">{$item.second.num}</font></td>
+                             <td><font color="{if $item.third.info.result gt 0}red{else}green{/if}">{$item.third.num}</font></td>
+                             <td><font color="{if $item.fourth.info.result gt 0}red{else}green{/if}">{$item.fourth.num}</font></td>
+                             <td><font color="{if $item.last.info.result gt 0}red{else}green{/if}">{$item.last.num}</font></td>
                         </tr>
                      {/foreach}
 
