@@ -22,12 +22,36 @@ class Lottery extends CI_Model {
             foreach ($rawData as $key => $value) {
                 foreach (array('first','second','third','fourth','last') as $keyOfNum) {
                     $value[$keyOfNum] = array("num" => $value[$keyOfNum],
-                        'info' => $this->compare(substr($lotteryType, 2),$rawData,$value,$keyOfNum,$strategy));
+                        'info' => $this->compare(substr($lotteryType, 2),$rawData,$value,$keyOfNum,$strategy),
+                        'prediction' => $this->predictNumber($rawData, $value, $keyOfNum, $key));
                 }
                 $rawData[$key] = $value;
             }
         }
         return [$rawData, $this->maxNumber];
+    }
+
+    function predictNumber($rawData, $value, $keyOfNum, $key){
+        $i = 1;
+        $key = $key + $i;
+        echo "----<br>";
+
+        while($key < count($rawData)){
+            $arrayNumber = array();
+            foreach (array('first','second','third','fourth','last') as $keyOfNumber){
+                array_push($arrayNumber, $rawData[$key][$keyOfNumber]);
+            }
+            var_dump($arrayNumber);
+            if(in_array($value[$keyOfNum],$arrayNumber)){
+                break;
+            }else{
+                $i++;
+                $key = $i + $key;
+            }
+        }
+        echo "----$i<br>";
+
+        return $i;
     }
 
     function compare($category, $rawData, $value, $keyOfNum, $strategy){

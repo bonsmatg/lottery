@@ -108,7 +108,7 @@
                          <tr>
                              <td>{$item.num}</td>
                              <td>{$item.time}</td>
-                             <td class="{if $item.first.info.result gt 0}danger{else}info{/if}">{$item.first.num}</td>
+                             <td class="{if $item.first.info.result gt 0}danger{else}info{/if}">{$item.first.num}({$item.first.prediction})</td>
                              <td class={if $item.second.info.result gt 0}"danger"{else}"info"{/if}>{$item.second.num}</td>
                              <td class={if $item.third.info.result gt 0}"danger"{else}"info"{/if}>{$item.third.num}</td>
                              <td class={if $item.fourth.info.result gt 0}"danger"{else}"info"{/if}>{$item.fourth.num}</td>
