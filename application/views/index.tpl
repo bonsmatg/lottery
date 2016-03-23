@@ -78,6 +78,22 @@
                  <br>
                  <div class="row">
                  <table class="table table-striped table-bordered table-hover table-condensed">
+                     <tr class="warning">
+                         <td colspan="2" align="middle">MAX</td>
+                         <td>{$data[1]['first']}</td>
+                         <td>{$data[1]['second']}</td>
+                         <td>{$data[1]['third']}</td>
+                         <td>{$data[1]['fourth']}</td>
+                         <td>{$data[1]['last']}</td>
+                     </tr>
+                     <tr class="success">
+                         <td colspan="2" align="middle">Current Continued</td>
+                         <td>{$data[0][$data[0]|@count-1].first.info.result}</td>
+                         <td>{$data[0][$data[0]|@count-1].second.info.result}</td>
+                         <td>{$data[0][$data[0]|@count-1].third.info.result}</td>
+                         <td>{$data[0][$data[0]|@count-1].fourth.info.result}</td>
+                         <td>{$data[0][$data[0]|@count-1].last.info.result}</td>
+                     </tr>
 					 <tr>
 						 <th>NO.</th>
 						 <th>Time</th>
@@ -99,15 +115,7 @@
                              <td class={if $item.last.info.result gt 0}"danger"{else}"info"{/if}>{$item.last.num}</td>
                         </tr>
                      {/foreach}
-					 <tr>
-						 <td></td>
-						 <td>MAX</td>
-						 <td>{$data[1]['first']}</td>
-						 <td>{$data[1]['second']}</td>
-						 <td>{$data[1]['third']}</td>
-						 <td>{$data[1]['fourth']}</td>
-						 <td>{$data[1]['last']}</td>
-					 </tr>
+
                      {else}
                          <tr>
                              <td colspan="7" align="middle">---- No Data ----</td>
