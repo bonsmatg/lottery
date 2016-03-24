@@ -43,11 +43,13 @@ class Lottery extends CI_Model {
 
     function getPredictNumber($category, $originalNumber, $ruleElement){
         $divide = 10;
+        $ok     = 0;
         if ($category == "11x5"){
             $divide = 11;
+            $ok     = 11;
         }
         $number = ($originalNumber + $ruleElement) % $divide;
-        if ($number == 0) $number = 11;
+        if ($number == 0) $number = $ok;
         return $number;
     }
 
