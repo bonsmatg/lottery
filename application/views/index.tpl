@@ -81,7 +81,7 @@
                      <table class="table table-striped table-bordered table-hover table-condensed">
                          {if $data|@count neq 0}
                          <tr class="warning">
-                             <td colspan="2" align="middle">MAX-machine</td>
+                             <td colspan="2" align="left">MAX-machine</td>
                              <td>{$data[1]['first']['machine']}</td>
                              <td>{$data[1]['second']['machine']}</td>
                              <td>{$data[1]['third']['machine']}</td>
@@ -89,7 +89,7 @@
                              <td>{$data[1]['last']['machine']}</td>
                          </tr>
                          <tr class="info">
-                             <td colspan="2" align="middle">MAX-prediction</td>
+                             <td colspan="2" align="left">MAX-prediction</td>
                              <td>{$data[1]['first']['prediction']}</td>
                              <td>{$data[1]['second']['prediction']}</td>
                              <td>{$data[1]['third']['prediction']}</td>
@@ -97,7 +97,7 @@
                              <td>{$data[1]['last']['prediction']}</td>
                          </tr>
                          <tr class="success">
-                             <td colspan="2" align="middle">Current Continued</td>
+                             <td colspan="2" align="left">Current Continued</td>
                              <td>{$data[0][$data[0]|@count-1].first.info.result}</td>
                              <td>{$data[0][$data[0]|@count-1].second.info.result}</td>
                              <td>{$data[0][$data[0]|@count-1].third.info.result}</td>

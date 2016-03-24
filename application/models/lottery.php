@@ -74,7 +74,7 @@ class Lottery extends CI_Model {
             $this->maxNumber[$keyOfNum]['prediction'] = $i;
         }
 
-        return [$i, $hit];
+        return [$i, $hit, $predictNumber];
     }
 
     function compare($category, $rawData, $value, $keyOfNum, $strategy){

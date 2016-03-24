@@ -20,7 +20,7 @@ class Home extends MY_Controller {
 	public function showData($type, $date, $strategy){
 		$this->load->model("lottery");
         $data = $this->lottery->getData($type, $date, $strategy);
-
+//		echo json_encode($data);
 		$this->assign('data', $data);
 		$this->assign('type', $type);
 		$this->assign('date', $date);
