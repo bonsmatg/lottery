@@ -6,24 +6,34 @@ class Lottery extends CI_Model {
     public $maxNumber;
     function __construct() {
         parent::__construct();
+        foreach (array('first','second','third','fourth','last') as $keyOfNum) {
+            $this->maxNumber[$keyOfNum]['prediction'] = 0;
+            $this->maxNumber[$keyOfNum]['machine'] = 0;
+        }
     }
 
-    function getData($lotteryType, $date, $strategy) {
-        $this->maxNumber = [];
+    public function getData($lotteryType, $date, $strategy, $predictStrategy = [1, 2, 3, 5, 8]) {
         $dateArray = explode('-', $date);
         $condition = array('year' =>$dateArray[0], 'month' => $dateArray[1], 'day' => $dateArray[2]);
 
         $this->db->where($condition);
         $rawData = $this->db->select('num,time,no,first,second,third,fourth,last')->from($lotteryType)
             ->order_by('num')->get()->result_array();
+
+        $i= 0;
+        foreach(array('first','second','third','fourth','last') as $keyOfNum){
+            $map[$keyOfNum] = $predictStrategy[$i];
+            $i++;
+        }
         if(empty($rawData)){
             return $rawData;
         }else{
             foreach ($rawData as $key => $value) {
                 foreach (array('first','second','third','fourth','last') as $keyOfNum) {
+                    $predictNumber = $this->getPredictNumber(substr($lotteryType, 2), $value[$keyOfNum], $map[$keyOfNum]);
                     $value[$keyOfNum] = array("num" => $value[$keyOfNum],
                         'info' => $this->compare(substr($lotteryType, 2),$rawData,$value,$keyOfNum,$strategy),
-                        'prediction' => $this->predictNumber($rawData, $value, $keyOfNum, $key + 1));
+                        'prediction' => $this->predictNumber($rawData, $predictNumber, $keyOfNum, $key + 1));
                 }
                 $rawData[$key] = $value;
             }
@@ -31,8 +41,19 @@ class Lottery extends CI_Model {
         return [$rawData, $this->maxNumber];
     }
 
-    function predictNumber($rawData, $value, $keyOfNum, $key){
+    function getPredictNumber($category, $originalNumber, $ruleElement){
+        $divide = 10;
+        if ($category == "11x5"){
+            $divide = 11;
+        }
+        $number = ($originalNumber + $ruleElement) % $divide;
+        if ($number == 0) $number = 11;
+        return $number;
+    }
+
+    function predictNumber($rawData, $predictNumber, $keyOfNum, $key){
         $i = 0;
+        $hit = 0;
 
         while($key < count($rawData)){
             $i++;
@@ -40,14 +61,18 @@ class Lottery extends CI_Model {
             foreach (array('first','second','third','fourth','last') as $keyOfNumber){
                 array_push($arrayNumber, $rawData[$key][$keyOfNumber]);
             }
-            if(in_array($value[$keyOfNum],$arrayNumber)){
+            if(in_array($predictNumber, $arrayNumber)){
+                $hit = 1;
                 break;
             }else{
                 $key++;
             }
         }
+        if($i > $this->maxNumber[$keyOfNum]['prediction']){
+            $this->maxNumber[$keyOfNum]['prediction'] = $i;
+        }
 
-        return $i;
+        return [$i, $hit];
     }
 
     function compare($category, $rawData, $value, $keyOfNum, $strategy){
@@ -78,12 +103,8 @@ class Lottery extends CI_Model {
                     $result = 1;
                 }else{
                     $result = $rawData[$value['no'] - 2][$keyOfNum]['info']['result'] + 1;
-                    if(array_key_exists($keyOfNum, $this->maxNumber)){
-                        if($result > $this->maxNumber[$keyOfNum]){
-                            $this->maxNumber[$keyOfNum] = $result;
-                        }
-                    }else{
-                        $this->maxNumber[$keyOfNum] = $result;
+                    if($result > $this->maxNumber[$keyOfNum]['machine']){
+                        $this->maxNumber[$keyOfNum]['machine'] = $result;
                     }
                 }
             }
@@ -95,12 +116,8 @@ class Lottery extends CI_Model {
                     $result = 1;
                 }else{
                     $result = $rawData[$value['no'] - 2][$keyOfNum]['info']['result'] + 1;
-                    if(array_key_exists($keyOfNum, $this->maxNumber)){
-                        if($result > $this->maxNumber[$keyOfNum]){
-                            $this->maxNumber[$keyOfNum] = $result;
-                        }
-                    }else{
-                        $this->maxNumber[$keyOfNum] = $result;
+                    if($result > $this->maxNumber[$keyOfNum]['machine']){
+                        $this->maxNumber[$keyOfNum]['machine'] = $result;
                     }
                 }
             }
