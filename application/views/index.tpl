@@ -119,11 +119,46 @@
                              <tr>
                                  <td>{$item.num}</td>
                                  <td>{$item.time}</td>
-                                 <td class="{if $item.first.prediction[1] eq 0}danger{/if}"><font color="{if $item.first.info.result gt 0}red{else}green{/if}">{$item.first.num}</font>({$item.first.prediction[0]})</td>
-                                 <td class="{if $item.second.prediction[1] eq 0}danger{/if}"><font color="{if $item.second.info.result gt 0}red{else}green{/if}">{$item.second.num}</font>({$item.second.prediction[0]})</td>
-                                 <td class="{if $item.third.prediction[1] eq 0}danger{/if}"><font color="{if $item.third.info.result gt 0}red{else}green{/if}">{$item.third.num}</font>({$item.third.prediction[0]})</td>
-                                 <td class="{if $item.fourth.prediction[1] eq 0}danger{/if}"><font color="{if $item.fourth.info.result gt 0}red{else}green{/if}">{$item.fourth.num}</font>({$item.fourth.prediction[0]})</td>
-                                 <td class="{if $item.last.prediction[1] eq 0}danger{/if}"><font color="{if $item.last.info.result gt 0}red{else}green{/if}">{$item.last.num}</font>({$item.last.prediction[0]})</td>
+                                 <td class="{if $item.first.prediction[1] eq 0}danger{/if}">
+                                     <font color="{if $item.first.info.result gt 0}red{else}green{/if}">
+                                         {$item.first.num}
+                                     </font>
+                                     (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.first.prediction[2]}">
+                                         {$item.first.prediction[0]}
+                                     </a>)
+                                 </td>
+                                 <td class="{if $item.second.prediction[1] eq 0}danger{/if}">
+                                     <font color="{if $item.second.info.result gt 0}red{else}green{/if}">
+                                         {$item.second.num}
+                                     </font>
+                                     (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.second.prediction[2]}">
+                                         {$item.second.prediction[0]}
+                                     </a>)
+                                 </td>
+                                 <td class="{if $item.third.prediction[1] eq 0}danger{/if}">
+                                     <font color="{if $item.third.info.result gt 0}red{else}green{/if}">
+                                         {$item.third.num}
+                                     </font>
+                                     (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.third.prediction[2]}">
+                                         {$item.third.prediction[0]}
+                                     </a>)
+                                 </td>
+                                 <td class="{if $item.fourth.prediction[1] eq 0}danger{/if}">
+                                     <font color="{if $item.fourth.info.result gt 0}red{else}green{/if}">
+                                         {$item.fourth.num}
+                                     </font>
+                                     (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.fourth.prediction[2]}">
+                                         {$item.fourth.prediction[0]}
+                                     </a>)
+                                 </td>
+                                 <td class="{if $item.last.prediction[1] eq 0}danger{/if}">
+                                     <font color="{if $item.last.info.result gt 0}red{else}green{/if}">
+                                         {$item.last.num}
+                                     </font>
+                                     (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.last.prediction[2]}">
+                                         {$item.last.prediction[0]}
+                                     </a>)
+                                 </td>
                             </tr>
                          {/foreach}
 
