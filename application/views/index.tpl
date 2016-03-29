@@ -88,6 +88,7 @@
                              <td>{$data[1]['fourth']['machine']}</td>
                              <td>{$data[1]['last']['machine']}</td>
                          </tr>
+                         {if $type|mb_substr:2:3 != "ssc"}
                          <tr class="info">
                              <td colspan="2" align="left">MAX-prediction</td>
                              <td>{$data[1]['first']['prediction']}</td>
@@ -96,6 +97,7 @@
                              <td>{$data[1]['fourth']['prediction']}</td>
                              <td>{$data[1]['last']['prediction']}</td>
                          </tr>
+                         {/if}
                          <tr class="success">
                              <td colspan="2" align="left">Current Continued</td>
                              <td>{$data[0][$data[0]|@count-1].first.info.result}</td>
@@ -119,45 +121,55 @@
                              <tr>
                                  <td>{$item.num}</td>
                                  <td>{$item.time}</td>
-                                 <td class="{if $item.first.prediction[1] eq 0}danger{/if}">
+                                 <td class="{if $type|mb_substr:2:3 != "ssc"}{if $item.first.prediction[1] eq 0}danger{/if}{/if}">
                                      <font color="{if $item.first.info.result gt 0}red{else}green{/if}">
                                          {$item.first.num}
                                      </font>
+                                     {if $type|mb_substr:2:3 != "ssc"}
                                      (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.first.prediction[2]}">
                                          {$item.first.prediction[0]}
                                      </a>)
+                                     {/if}
                                  </td>
-                                 <td class="{if $item.second.prediction[1] eq 0}danger{/if}">
+                                 <td class="{if $type|mb_substr:2:3 != "ssc"}{if $item.second.prediction[1] eq 0}danger{/if}{/if}">
                                      <font color="{if $item.second.info.result gt 0}red{else}green{/if}">
                                          {$item.second.num}
                                      </font>
+                                     {if $type|mb_substr:2:3 != "ssc"}
                                      (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.second.prediction[2]}">
                                          {$item.second.prediction[0]}
                                      </a>)
+                                     {/if}
                                  </td>
-                                 <td class="{if $item.third.prediction[1] eq 0}danger{/if}">
+                                 <td class="{if $type|mb_substr:2:3 != "ssc"}{if $item.third.prediction[1] eq 0}danger{/if}{/if}">
                                      <font color="{if $item.third.info.result gt 0}red{else}green{/if}">
                                          {$item.third.num}
                                      </font>
+                                     {if $type|mb_substr:2:3 != "ssc"}
                                      (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.third.prediction[2]}">
                                          {$item.third.prediction[0]}
                                      </a>)
+                                     {/if}
                                  </td>
-                                 <td class="{if $item.fourth.prediction[1] eq 0}danger{/if}">
+                                 <td class="{if $type|mb_substr:2:3 != "ssc"}{if $item.fourth.prediction[1] eq 0}danger{/if}{/if}">
                                      <font color="{if $item.fourth.info.result gt 0}red{else}green{/if}">
                                          {$item.fourth.num}
                                      </font>
+                                     {if $type|mb_substr:2:3 != "ssc"}
                                      (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.fourth.prediction[2]}">
                                          {$item.fourth.prediction[0]}
                                      </a>)
+                                     {/if}
                                  </td>
-                                 <td class="{if $item.last.prediction[1] eq 0}danger{/if}">
+                                 <td class="{if $type|mb_substr:2:3 != "ssc"}{if $item.last.prediction[1] eq 0}danger{/if}{/if}">
                                      <font color="{if $item.last.info.result gt 0}red{else}green{/if}">
                                          {$item.last.num}
                                      </font>
+                                     {if $type|mb_substr:2:3 != "ssc"}
                                      (<a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="Predict Number: {$item.last.prediction[2]}">
                                          {$item.last.prediction[0]}
                                      </a>)
+                                     {/if}
                                  </td>
                             </tr>
                          {/foreach}
