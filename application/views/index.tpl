@@ -82,19 +82,15 @@
                          {if $data|@count neq 0}
                          <tr class="warning">
                              <td colspan="2" align="left">MAX-machine</td>
-                             <td>{$data[1]['first']['machine']}</td>
-                             <td>{$data[1]['second']['machine']}</td>
-                             <td>{$data[1]['third']['machine']}</td>
-                             <td>{$data[1]['fourth']['machine']}</td>
-                             <td>{$data[1]['last']['machine']}</td>
+                             {foreach from=['first','second','third','fourth','last'] item=item}
+                                 <td>{$data[1][$item]['machine']}</td>
+                             {/foreach}
                          </tr>
                          <tr class="info">
                              <td colspan="2" align="left">MAX-prediction</td>
-                             <td>{$data[1]['first']['prediction']}</td>
-                             <td>{$data[1]['second']['prediction']}</td>
-                             <td>{$data[1]['third']['prediction']}</td>
-                             <td>{$data[1]['fourth']['prediction']}</td>
-                             <td>{$data[1]['last']['prediction']}</td>
+                             {foreach from=['first','second','third','fourth','last'] item=item}
+                                 <td>{$data[1][$item]['prediction']}</td>
+                             {/foreach}
                          </tr>
                          <tr class="success">
                              <td colspan="2" align="left">Current Continued</td>
