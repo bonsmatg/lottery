@@ -48,17 +48,21 @@
                  <div class="row">
                      <form name="dataForm" method="post">
                          <div class="col-md-12 col-xs-12 form-group">
-                         <div class="col-md-6 col-xs-12">
-                            <h2>{$date}</h2>
-                         </div>
-                         <input type="hidden" value="{$date}" name="date"/>
-                         <input type="hidden" value="{$strategy.method}" name="mode">
-                         <div class="col-md-2 col-xs-3">
-                             <button class="btn btn-warning" onclick="getPre()" type="submit">Previous</button>
-                         </div>
-                         <div class="col-md-2 col-xs-3">
-                             <button class="btn btn-info pull-right" onclick="getNext()" type="submit" {if $today == $date}disabled="disabled"{/if}>Next</button>
-                         </div>
+                             <h4>
+                                 <a href="javascript:void(0)" onclick="getPre()">
+                                     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                 </a>{$date}
+                                 <a {if $today != $date} href="javascript:void(0)" onclick="getNext()"{/if}>
+                                     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                 </a>
+                             </h4>
+                             <input type="hidden" value="{$date}" name="date"/>
+                             <input type="hidden" value="{$strategy.method}" name="mode">
+                             {*<div class="col-md-2 col-xs-3">*}
+                                 {*<button class="btn btn-warning" onclick="getPre()" type="submit">Previous</button>*}
+                                 {*<div class="col-md-2 col-xs-3">*}
+                                 {*<button class="btn btn-info pull-right" onclick="getNext()" type="submit" {if $today == $date}disabled="disabled"{/if}>Next</button>*}
+                             {*</div>*}
                          </div>
                      </form>
                      <script>
