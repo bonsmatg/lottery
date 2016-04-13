@@ -25,7 +25,9 @@
             });
         });
     </script>
+    <!--
     <link href='http://fonts.useso.com/css?family=Abel|Lato:300,400,700,300italic,700italic' rel='stylesheet' type='text/css'>
+    -->
     <script>
         $(function() {
             var pull    = $('#pull');
