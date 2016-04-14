@@ -83,7 +83,7 @@
                      </script>
                  </div>
                  <br>
-                 <div class="row col-md-11">
+                 <div class="row col-md-12">
                      <table class="table table-striped table-bordered table-hover table-condensed">
                          {if $data|@count neq 0}
                          <tr class="warning">
